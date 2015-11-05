@@ -22,7 +22,7 @@ plot4 <- function() {
 	SCC <- readRDS("Source_Classification_Code.rds")
 
 
-	## Across the United States, how have emissions from coal combustion-related sources changed 
+	## Question: Across the United States, how have emissions from coal combustion-related sources changed 
 	## from 1999–2008?
 
 	## Choose the SCC related with Coal 
@@ -31,7 +31,7 @@ plot4 <- function() {
 
 	coal_related <- SCC$SCC[coal_related]
 
-	## Only choose the rows related with Coal-Combustion	
+	## Only choose the rows related with Coal-Combustion and Aggregate the Emission by Year	
 
 	dt <- NEI[which(NEI$SCC %in% coal_related),]
 
@@ -49,9 +49,9 @@ plot4 <- function() {
 
 	## Change emission from millions to thousands to enhance the plot
 
-	dt$Emissions <- dt$Emissions / 1000000
+	dt_emissions_scale <- dt$Emissions / 1000000
 
-	barplot(height=dt$Emissions, names.arg=dt$year, xlab="years", 
+	barplot(height=dt_emissions_scale, names.arg=dt$year, xlab="years", 
 		ylab="total PM2.5 emissions (millions of tons)"
 		main="United States Total Coal Combustion-Related PM2.5 Emissions (1999-2008)", col = "blue")
 
