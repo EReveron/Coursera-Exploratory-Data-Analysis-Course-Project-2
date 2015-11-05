@@ -1,11 +1,8 @@
 plot1 <- function() {   
 	## plot1.R
-	## Create Plot (Histogram) for 'Global_active_power' requested by the Coursera Exploratory Data Analysis
-	## 		Course Project 1
+	## Create Plot1 requested by the Coursera Exploratory Data Analysis Course Project 2
 	## Written by: Enrique Reveron
 
-	## Set system locale to English to have the same output requested (strptime)
-	Sys.setlocale("LC_TIME", "English")
 
 	## Check if the data file is located in the working dir
 
@@ -32,7 +29,9 @@ plot1 <- function() {
 	dt <- aggregate(Emissions ~ year, NEI, sum)
 	
 
+	## Change emission scale to enhance the plot
 
+	dt$Emissions <- dt$Emissions / 1000000
 	
 	## Create a png file, a Histogram and Plot it
 
@@ -44,7 +43,8 @@ plot1 <- function() {
     		res=72)
 
 	barplot(height=dt$Emissions, names.arg=dt$year, xlab="years", 
-		ylab=expression('total PM'[2.5]*' emission'),main=expression('Total PM'[2.5]*' emissions at various years'))
+		ylab="total PM2.5 emissions (millions of tons)",
+		main="United States Total PM2.5 Emissions (1999-2008)", col = "blue")
 
 	dev.off()
 
