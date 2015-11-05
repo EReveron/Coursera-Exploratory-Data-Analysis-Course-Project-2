@@ -30,7 +30,7 @@ plot3 <- function() {
 
 	dt <- aggregate(Emissions ~ year + type , dt, sum)
 		
-	## Create a png file, a Histogram and Plot it
+	## Create a png file, Plot the graph using ggplot2
 
 	png(filename="plot3.png", 
     		units="px", 
@@ -39,11 +39,12 @@ plot3 <- function() {
     		pointsize=12, 
     		res=72)
 
-	barplot(height=dt$Emissions, names.arg=dt$year, xlab="years", 
-		ylab="total PM2.5 emissions (tons)",
-		main="Total PM2.5 Emissions (1999-2008) at Baltimore City, Maryland", col = "blue")
-
-
+	library(ggplot2)
+	
+	g <- ggplot(dt, aes(year, Emissions, color = type))
+	g <- g + geom_line() + xlab("year") + ylab("Total PM2.5 Emissions (tons)") +
+  		ggtitle("Total Emissions in Baltimore City, Maryland from 1999 to 2008")
+	print(g)
 	dev.off()
 
 }
