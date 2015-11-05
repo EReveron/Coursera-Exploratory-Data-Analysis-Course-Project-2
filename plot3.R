@@ -1,12 +1,8 @@
 plot3 <- function() {   
 	## plot3.R
-	
-
-
+	## Create plot3 requested by the Coursera Exploratory Data Analysis Course Project 2
 	## Written by: Enrique Reveron
 
-	## Set system locale to English to have the same output requested (strptime)
-	Sys.setlocale("LC_TIME", "English")
 
 	## Check if the data file is located in the working dir
 
@@ -25,21 +21,16 @@ plot3 <- function() {
 	NEI <- readRDS("summarySCC_PM25.rds")
 	SCC <- readRDS("Source_Classification_Code.rds")
 
-
-	## Of the four types of sources indicated by the type (point, nonpoint, onroad, nonroad) variable, 
-	## which of these four sources have seen decreases in emissions from 1999–2008 for Baltimore City? 
-	## Which have seen increases in emissions from 1999–2008? Use the ggplot2 plotting system to make 
-	## a plot answer this question.
-
+	## Question: Of the four types of sources indicated by the type (point, nonpoint, onroad, nonroad) 
+	## variable, which of these four sources have seen decreases in emissions from 1999â€“2008 for 
+	## Baltimore City? Which have seen increases in emissions from 1999â€“2008? 
+	## Use the ggplot2 plotting system to make a plot answer this question.
 
 	dt <- NEI[which(NEI$fips=="24510"),]
 
 	dt <- aggregate(Emissions ~ year + type , dt, sum)
-	
-
-
-	
-	## Create a png file and Plot it
+		
+	## Create a png file, a Histogram and Plot it
 
 	png(filename="plot3.png", 
     		units="px", 
@@ -49,7 +40,9 @@ plot3 <- function() {
     		res=72)
 
 	barplot(height=dt$Emissions, names.arg=dt$year, xlab="years", 
-		ylab=expression('total PM'[2.5]*' emission'),main=expression('Total PM'[2.5]*' emissions at Baltimore in various years'))
+		ylab="total PM2.5 emissions (tons)",
+		main="Total PM2.5 Emissions (1999-2008) at Baltimore City, Maryland", col = "blue")
+
 
 	dev.off()
 
