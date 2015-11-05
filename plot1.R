@@ -28,10 +28,6 @@ plot1 <- function() {
 
 	## Aggregate the Data of all the Emissions by Year
 	dt <- aggregate(Emissions ~ year, NEI, sum)
-
-	## Change emission scale to enhance the plot
-
-	dt$Emissions <- dt$Emissions / 1000000
 	
 	## Create a png file, a Histogram and Plot it
 
@@ -42,7 +38,11 @@ plot1 <- function() {
     		pointsize=12, 
     		res=72)
 
-	barplot(height=dt$Emissions, names.arg=dt$year, xlab="years", 
+	## Change emission scale to enhance the plot
+
+	dt_emissions_scale <- dt$Emissions / 1000000
+	
+	barplot(height=dt_emissions_scale, names.arg=dt$year, xlab="years", 
 		ylab="total PM2.5 emissions (millions of tons)",
 		main="United States Total PM2.5 Emissions (1999-2008)", col = "blue")
 
