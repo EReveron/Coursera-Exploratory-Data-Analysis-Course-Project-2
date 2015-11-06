@@ -26,11 +26,11 @@ plot5 <- function() {
 
 	## Choose the SCC related with motor vehicle sources 
 
-	coal_related <- grep("Vehicle",SCC$SCCr)
+	coal_related <- grep("Vehicle",SCC$EI.Sector)
 
 	coal_related <- SCC$SCC[coal_related]
 
-	## Only choose the rows related with Coal-Combustion and Baltimore	
+	## Only choose the rows related with motor vehicle and Baltimore	
 
 	dt <- NEI[which((NEI$SCC %in% coal_related) & NEI$fips=="24510"),]
 	
@@ -38,22 +38,20 @@ plot5 <- function() {
 
 	dt <- aggregate(Emissions ~ year, dt, sum)
 		
-	## Create a png file, a Histogram and Plot it
+	## Create a png file and Plot it
 
-	png(filename="plot2.png", 
+	png(filename="plot5.png", 
     		units="px", 
-    		width=480, 
+    		width=640, 
     		height=480, 
     		pointsize=12, 
     		res=72)
 
-	## Change emission from millions to thousands to enhance the plot
-
-	dt_emissions_scale <- dt$Emissions / 1000000
-
-	barplot(height=dt_emissions_scale, names.arg=dt$year, xlab="years", 
-		ylab="total PM2.5 emissions (millions of tons)"
-		main="United States Total Coal Combustion-Related PM2.5 Emissions (1999-2008)", col = "blue")
+	library(ggplot2)
+	qplot(year, Emissions, data = dt, geom ="bar", stat = "identity",
+		xlab="years", 
+		ylab="total PM2.5 emissions (tons)",
+		main="Baltimore City Motor Vehicle Emissions (1999-2008)")
 
 	dev.off()
 
