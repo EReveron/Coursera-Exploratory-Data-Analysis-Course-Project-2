@@ -36,12 +36,18 @@ plot6 <- function() {
 	dt_baltimore <- NEI[which((NEI$SCC %in% coal_related) & NEI$fips=="24510"),]
 
 	dt_baltimore <- aggregate(Emissions ~ year, dt_baltimore, sum)
+	
+	dt_baltimore[State,] <- "BALTIMORE"
 
 	## Only choose the rows related with Coal-Combustion and Los Angeles and Aggregate Emissions by Date
 
 	dt_la <- NEI[which((NEI$SCC %in% coal_related) & NEI$fips=="06037"),]
 
 	dt_la <- aggregate(Emissions ~ year, dt_la, sum)
+	
+	dt_la[State,] <- "LOS ANGELES"
+	
+	dt2 <- rbind(dt_baltimore,dt_la)
 
 	## Create a png file and Plot it
 
