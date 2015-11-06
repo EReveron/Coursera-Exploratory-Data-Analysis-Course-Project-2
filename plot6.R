@@ -58,14 +58,13 @@ plot6 <- function() {
     		pointsize=12, 
     		res=72)
 
-	## Change emission from millions to thousands to enhance the plot
 
-	dt_emissions_scale <- dt$Emissions / 1000000
-
-	barplot(height=dt_emissions_scale, names.arg=dt$year, xlab="years", 
-		ylab="total PM2.5 emissions (millions of tons)"
-		main="United States Total Coal Combustion-Related PM2.5 Emissions (1999-2008)", col = "blue")
-
+	library(ggplot2)
+	
+	qplot(year, Emissions, data = dt2, fill = State, color = State, geom ="line", 
+		xlab = "year", ylab = "Total PM2.5 Emissions (tons)",
+		main = "Baltimore and Los Angeles Total Vehicle Emissions from 1999 to 2008")
+		
 	dev.off()
 
 }
