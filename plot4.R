@@ -50,6 +50,7 @@ plot4 <- function() {
 
 	dt$Emissions <- dt$Emissions / 1000000
 
+	library(ggplot2)
 	qplot(year, Emissions, data = dt, geom ="bar", stat = "identity",
 		xlab="years", 
 		ylab="total PM2.5 emissions (millions of tons)",
