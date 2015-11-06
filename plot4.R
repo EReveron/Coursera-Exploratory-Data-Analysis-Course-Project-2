@@ -41,19 +41,19 @@ plot4 <- function() {
 
 	png(filename="plot4.png", 
     		units="px", 
-    		width=480, 
+    		width=640, 
     		height=480, 
     		pointsize=12, 
     		res=72)
 
-
 	## Change emission from millions to thousands to enhance the plot
 
-	dt_emissions_scale <- dt$Emissions / 1000000
+	dt$Emissions <- dt$Emissions / 1000000
 
-	barplot(height=dt_emissions_scale, names.arg=dt$year, xlab="years", 
+	qplot(year, Emissions, data = dt, geom ="bar", stat = "identity",
+		xlab="years", 
 		ylab="total PM2.5 emissions (millions of tons)",
-		main="United States Total Coal Combustion-Related PM2.5 Emissions (1999-2008)", col = "blue")
+		main="United States Total Coal Combustion-Related PM2.5 Emissions (1999-2008)")
 
 	dev.off()
 
