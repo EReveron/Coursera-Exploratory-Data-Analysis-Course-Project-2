@@ -52,7 +52,7 @@ plot4 <- function() {
 	dt_emissions_scale <- dt$Emissions / 1000000
 
 	barplot(height=dt_emissions_scale, names.arg=dt$year, xlab="years", 
-		ylab="total PM2.5 emissions (millions of tons)"
+		ylab="total PM2.5 emissions (millions of tons)",
 		main="United States Total Coal Combustion-Related PM2.5 Emissions (1999-2008)", col = "blue")
 
 	dev.off()
