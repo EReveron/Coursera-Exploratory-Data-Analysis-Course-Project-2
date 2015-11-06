@@ -27,7 +27,7 @@ plot6 <- function() {
 
 	## Choose the SCC related with motor vehicle sources 
 
-	coal_related <- grep("Vehicle",SCC$SCCr)
+	coal_related <- grep("Vehicle",SCC$EI.Sector)
 
 	coal_related <- SCC$SCC[coal_related]
 
