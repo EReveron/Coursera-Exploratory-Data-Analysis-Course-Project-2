@@ -44,10 +44,10 @@ plot3 <- function() {
 
 	library(ggplot2)
 	
-	g <- ggplot(dt, aes(year, Emissions, color = type))
-	g <- g + geom_line() + xlab("year") + ylab("Total PM2.5 Emissions (tons)") +
-  		ggtitle("Total Emissions in Baltimore City, Maryland from 1999 to 2008")
-	print(g)
+	qplot(year, Emissions, data = dt, fill = type, color = type, geom ="line", 
+		xlab = "year", ylab = "Total PM2.5 Emissions (tons)",
+		main = "Total Emissions in Baltimore City, Maryland from 1999 to 2008")
+	
 	dev.off()
 
 }
