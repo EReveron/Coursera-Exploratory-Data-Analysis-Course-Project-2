@@ -29,7 +29,7 @@ plot1 <- function() {
 	## Aggregate the Data of all the Emissions by Year
 	dt <- aggregate(Emissions ~ year, NEI, sum)
 	
-	## Create a png file, a Histogram and Plot it
+	## Create a png file and Plot it
 
 	png(filename="plot1.png", 
     		units="px", 
