@@ -1,4 +1,4 @@
-plot3 <- function() {   
+﻿plot3 <- function() {   
 	## plot3.R
 	## Create plot3 requested by the Coursera Exploratory Data Analysis Course Project 2
 	## Written by: Enrique Reveron
@@ -35,6 +35,7 @@ plot3 <- function() {
 		
 	## Create a png file, Plot the graph using ggplot2
 
+
 	png(filename="plot3.png", 
     		units="px", 
     		width=480, 
@@ -44,10 +45,9 @@ plot3 <- function() {
 
 	library(ggplot2)
 	
-	qplot(year, Emissions, data = dt, fill = type, color = type, geom ="line", 
+	g <- qplot(year, Emissions, data = dt, fill = type, color = type, geom ="line", 
 		xlab = "year", ylab = "Total PM2.5 Emissions (tons)",
 		main = "Total Emissions in Baltimore City, Maryland from 1999 to 2008")
-	
+	print(g)
 	dev.off()
-
 }

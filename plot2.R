@@ -35,7 +35,7 @@ plot2 <- function() {
     		units="px", 
     		width=480, 
     		height=480, 
-    		pointsize=12, 
+    		pointsize=12,  
     		res=72)
 
 	barplot(height=dt$Emissions, names.arg=dt$year, xlab="years", 

@@ -34,8 +34,8 @@ plot1 <- function() {
 	png(filename="plot1.png", 
     		units="px", 
     		width=480, 
-    		height=480, 
-    		pointsize=12, 
+    		height=480,  
+    		pointsize=12,  
     		res=72)
 
 	## Change emission scale to enhance the plot

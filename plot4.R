@@ -1,4 +1,4 @@
-plot4 <- function() {   
+﻿plot4 <- function() {   
 	## plot4.R
 	## Create Plot4 requested by the Coursera Exploratory Data Analysis Course Project 2
 	## Written by: Enrique Reveron
@@ -51,11 +51,11 @@ plot4 <- function() {
 	dt$Emissions <- dt$Emissions / 1000000
 
 	library(ggplot2)
-	qplot(year, Emissions, data = dt, geom ="bar", stat = "identity",
+	g <- qplot(year, Emissions, data = dt, geom ="bar", stat = "identity",
 		xlab="years", 
 		ylab="total PM2.5 emissions (millions of tons)",
 		main="United States Total Coal Combustion-Related PM2.5 Emissions (1999-2008)")
-
+	print(g)
 	dev.off()
 
 }
