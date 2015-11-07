@@ -48,11 +48,11 @@ plot5 <- function() {
     		res=72)
 
 	library(ggplot2)
-	qplot(year, Emissions, data = dt, geom ="bar", stat = "identity",
+	g <- qplot(factor(year), Emissions, data = dt, geom ="bar", stat = "identity",
 		xlab="years", 
 		ylab="total PM2.5 emissions (tons)",
 		main="Baltimore City Motor Vehicle Emissions (1999-2008)")
-
+  print(g)
 	dev.off()
 
 }

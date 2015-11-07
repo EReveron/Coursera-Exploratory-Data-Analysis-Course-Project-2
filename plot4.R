@@ -1,4 +1,4 @@
-﻿plot4 <- function() {   
+plot4 <- function() {   
 	## plot4.R
 	## Create Plot4 requested by the Coursera Exploratory Data Analysis Course Project 2
 	## Written by: Enrique Reveron
@@ -37,7 +37,7 @@
 
 	dt <- aggregate(Emissions ~ year, dt, sum)
 		
-	## Create a png file, a Histogram and Plot it
+	## Create a png file and Plot it
 
 	png(filename="plot4.png", 
     		units="px", 
@@ -46,16 +46,16 @@
     		pointsize=12, 
     		res=72)
 
-	## Change emission from millions to thousands to enhance the plot
+	## Change emission scale to enhance the plot
 
 	dt$Emissions <- dt$Emissions / 1000000
 
 	library(ggplot2)
-	g <- qplot(year, Emissions, data = dt, geom ="bar", stat = "identity",
+	g <- qplot(factor(year), Emissions, data = dt, geom ="bar", stat = "identity",
 		xlab="years", 
 		ylab="total PM2.5 emissions (millions of tons)",
 		main="United States Total Coal Combustion-Related PM2.5 Emissions (1999-2008)")
 	print(g)
-	dev.off()
+	dev.off() 
 
 }

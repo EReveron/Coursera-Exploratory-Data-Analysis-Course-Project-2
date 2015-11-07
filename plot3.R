@@ -1,4 +1,4 @@
-﻿plot3 <- function() {   
+plot3 <- function() {   
 	## plot3.R
 	## Create plot3 requested by the Coursera Exploratory Data Analysis Course Project 2
 	## Written by: Enrique Reveron
@@ -43,11 +43,10 @@
     		pointsize=12, 
     		res=72)
 
-	library(ggplot2)
-	
-	g <- qplot(year, Emissions, data = dt, fill = type, color = type, geom ="line", 
-		xlab = "year", ylab = "Total PM2.5 Emissions (tons)",
-		main = "Total Emissions in Baltimore City, Maryland from 1999 to 2008")
-	print(g)
-	dev.off()
+  library(ggplot2)
+  g <- qplot(year, Emissions, data = dt, fill = type, color = type, geom ="line",
+        xlab = "year", ylab = "Total PM2.5 Emissions (tons)", 
+        main = "Total Emissions in Baltimore City, Maryland from 1999 to 2008")
+  print(g)
+  dev.off()
 }

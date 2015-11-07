@@ -37,7 +37,7 @@ plot6 <- function() {
 
 	dt_baltimore <- aggregate(Emissions ~ year, dt_baltimore, sum)
 	
-	dt_baltimore[State,] <- "BALTIMORE"
+	dt_baltimore["State"] <- "BALTIMORE"
 
 	## Only choose the rows related with Coal-Combustion and Los Angeles and Aggregate Emissions by Date
 
@@ -45,13 +45,13 @@ plot6 <- function() {
 
 	dt_la <- aggregate(Emissions ~ year, dt_la, sum)
 	
-	dt_la[State,] <- "LOS ANGELES"
+	dt_la["State"] <- "LOS ANGELES"
 	
 	dt2 <- rbind(dt_baltimore,dt_la)
 
 	## Create a png file and Plot it
 
-	png(filename="plot2.png", 
+	png(filename="plot6.png", 
     		units="px", 
     		width=480, 
     		height=480, 
@@ -61,10 +61,14 @@ plot6 <- function() {
 
 	library(ggplot2)
 	
-	qplot(year, Emissions, data = dt2, fill = State, color = State, geom ="line", 
-		xlab = "year", ylab = "Total PM2.5 Emissions (tons)",
-		main = "Baltimore and Los Angeles Total Vehicle Emissions from 1999 to 2008")
-		
+	g <- ggplot(dt2, aes(factor(year), Emissions)) + 
+	  xlab("year") + ylab("Total PM2.5 Emissions (tons)") +
+	  geom_bar(stat = "identity", color = "red", fill = "white")+
+	  geom_point()+geom_line(color = "blue")+
+	  facet_wrap(~State, scales = "free_y") +
+	  ggtitle("Baltimore City vs Los Angeles County Motor Vehicle Emissions (1999-2008)")
+	
+	print(g)	
 	dev.off()
 
 }

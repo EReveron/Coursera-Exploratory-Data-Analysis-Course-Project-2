@@ -42,6 +42,6 @@ plot2 <- function() {
 		ylab="total PM2.5 emissions (tons)",
 		main="Total PM2.5 Emissions (1999-2008) at Baltimore City, Maryland", col = "blue")
 		
-	dev.off()
+	dev.off() 
 
 }

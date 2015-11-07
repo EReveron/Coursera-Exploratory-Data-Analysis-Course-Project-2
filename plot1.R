@@ -46,6 +46,6 @@ plot1 <- function() {
 		ylab="total PM2.5 emissions (millions of tons)",
 		main="United States Total PM2.5 Emissions (1999-2008)", col = "blue")
 
-	dev.off()
+	dev.off() 
 
 }
